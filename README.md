@@ -1,1 +1,2 @@
-# 2025_dod_linear_stability
+# The domain-of-dependence stabilization for
+cut-cell meshes is fully discretely stable
