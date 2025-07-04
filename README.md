@@ -1,2 +1,1 @@
-# The domain-of-dependence stabilization for
-cut-cell meshes is fully discretely stable
+# The domain-of-dependence stabilization for cut-cell meshes is fully discretely stable
