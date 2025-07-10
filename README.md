@@ -75,10 +75,10 @@ The data for the two dimensional case were obtained using the DUNE framework in 
 
 ## Authors
 
-- [Gunnar Birke]
-- [Christian Engwer]
-- [Louis Petri]
-- [Hendrik Ranocha]
+- Gunnar Birke (gunnar.birke@uni-muenster.de)
+- [Christian Engwer](https://www.uni-muenster.de/FB10srvi/persdb/MM-member.php?id=724) (christian.engwer@uni-muenster.de)
+- Louis Petri (lpetri01@uni-mainz.de)
+- [Hendrik Ranocha](https://ranocha.de) (hendrik.ranocha@uni-mainz.de)
 
 
 ## License
