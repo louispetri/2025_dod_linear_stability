@@ -1,1 +1,92 @@
+# TODO
+- DOI
+- references on paper and for this repo
+- include instruction to obtain julia results
+- include full instruction for DUNE results
+
 # The domain-of-dependence stabilization for cut-cell meshes is fully discretely stable
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
+[![DOI](#TODO)
+
+This repository contains information and code to reproduce the results
+presented in the article
+```bibtex
+@online{
+}
+```
+
+If you find these results useful, please cite the article mentioned above.
+If you use the implementations provided here, please **also** cite this
+repository as
+```bibtex
+@misc{
+}
+```
+
+## Abstract
+
+We present a fully discrete stability analysis of the
+domain-of-dependence stabilization for hyperbolic problems. The method
+aims to address issues caused by small cut cells by redistributing
+mass around the neighborhood of a small cut cell at a semi-discrete
+level. Our analysis is conducted for the linear advection model
+problem in one spatial dimension. We demonstrate that fully discrete
+stability can be achieved under a time step restriction that does not
+depend on the arbitrarily small cells, using an operator norm
+estimate. Additionally, this analysis offers a detailed understanding
+of the stability mechanism and highlights some challenges associated
+with higher-order polynomials. We also propose a way to mitigate these
+issues to derive a feasible CFL-like condition.
+The analytical findings, as well as the proposed
+solution are verified numerically in
+one- and two-dimensional simulations.
+
+
+## Numerical experiments
+
+In order to generate the results from this repository, you need to install [Julia](https://julialang.org).
+We recommend using `juliaup`, as detailed in the official website [https://julialang.org](https://julialang.org).
+
+
+The one dimensional results have been generated using Julia version 1.10.2, and we recommend installing the same.
+Once you have installed Julia, you can clone this repository, enter this directory and start the executable
+`julia` with the following steps
+
+```shell
+git clone https://github.com/louispetri/2025_dod_linear_stability.git
+cd 2025_dod_linear_stability
+julia --project=.
+```
+
+Then enter the following commands to generate the data for the one dimensional case and all the plots of the paper.
+
+```julia
+julia> import Pkg; Pkg.instantiate() # Does not need to be re-run the next time you enter the REPL
+julia> include("--.jl") # What gets generated
+# TODO
+```
+
+All the figures are now ready and available in the following locations:
+1. 
+
+The data for the two dimensional case were obtained using the DUNE framework in C+ and can be reproduced as follows:
+
+
+## Authors
+
+- [Gunnar Birke]
+- [Christian Engwer]
+- [Louis Petri]
+- [Hendrik Ranocha]
+
+
+## License
+
+The code in this repository is published under the MIT license, see the
+`LICENSE` file.
+
+
+## Disclaimer
+
+Everything is provided as is and without warranty. Use at your own risk!
