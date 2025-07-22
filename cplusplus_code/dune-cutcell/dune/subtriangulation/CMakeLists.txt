@@ -1,0 +1,3 @@
+add_subdirectory(common)
+add_subdirectory(simpletpmctriangulation)
+add_subdirectory(io)

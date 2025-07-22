@@ -1,0 +1,3 @@
+add_subdirectory(subtriangulation)
+add_subdirectory(functions)
+add_subdirectory(hypercut)

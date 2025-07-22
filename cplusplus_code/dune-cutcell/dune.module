@@ -1,0 +1,11 @@
+################################
+# Dune module information file #
+################################
+
+#Name of the module
+Module: dune-cutcell
+Version: 0.1
+Maintainer: christian.engwer@uni-muenster.de
+#depending on
+Depends: dune-common dune-grid dune-istl dune-functions
+Suggests:
