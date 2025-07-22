@@ -5,7 +5,7 @@ offsets=$1
 max_nodes=$2
 
 # Every value will be tested as a factor for the capacity
-for val in 1.6 1.61 1.62 ; do
+for val in 0.16 0.161 0.162 ; do
 	export tau=$val
 	sed_subs_tau="s/tau =.*/tau = $tau/g"
 	sed -i -e "$sed_subs_tau" scalar-transport.ini
