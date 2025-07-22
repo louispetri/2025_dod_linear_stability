@@ -22,8 +22,8 @@ namespace Dune
         using ctype = typename G::ctype;
         const auto& referenceElement
             = ReferenceElements<ctype, G::mydimension>::general(geometry.type());
-        std::vector<FieldVector<ctype, G::mydimension> > corners;
-        corners.reserve(referenceElement.size(G::mydimension));
+        typename ReservedStorageMultiLinearGeometryTraits<ctype>::template CornerStorage<GOut::mydimension, GOut::coorddimension>::Type corners;
+
         for (int i = 0; i < referenceElement.size(G::mydimension); ++i) {
           corners.push_back(referenceElement.position(i, G::mydimension));
         }

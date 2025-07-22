@@ -32,9 +32,9 @@ namespace Dune::SubTriangulation {
     return { a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0] };
   }
 
-  template <class ctype>
+  template <class ctype, int size>
   FieldVector<ctype, 3>
-  computeUnitOuterNormal(const std::vector<FieldVector<ctype, 3>>& corners,
+  computeUnitOuterNormal(const Dune::ReservedVector<FieldVector<ctype, 3>, size>& corners,
                           const std::vector<ctype>& values)
   {
     // move corner 0 to the origin
@@ -49,9 +49,9 @@ namespace Dune::SubTriangulation {
     return cp;
   }
 
-  template <class ctype>
+  template <class ctype, int size>
   FieldVector<ctype, 2>
-  computeUnitOuterNormal(const std::vector<FieldVector<ctype, 2>>& corners,
+  computeUnitOuterNormal(const ReservedVector<FieldVector<ctype, 2>, size>& corners,
                          const std::vector<ctype>& values)
   {
     std::array<Dune::FieldVector<ctype, 2>, 4> basisGradients
@@ -81,9 +81,9 @@ namespace Dune::SubTriangulation {
     return diff;
   }
 
-  template <class ctype>
+  template <class ctype, int size>
   FieldVector<ctype, 1>
-  computeUnitOuterNormal(const std::vector<FieldVector<ctype, 1>>& corners,
+  computeUnitOuterNormal(const Dune::ReservedVector<FieldVector<ctype, 1>, size>& corners,
                           const std::vector<ctype>& values)
   {
     assert(values.size() == 2);
@@ -114,7 +114,7 @@ namespace Dune::SubTriangulation {
     }
 
     private:
-      std::vector<FieldVector<ctype, GOut::coorddimension> > corners;
+      typename ReservedStorageMultiLinearGeometryTraits<ctype>::template CornerStorage<GOut::mydimension, GOut::coorddimension>::Type corners;
   };
 
   template<class Target>
@@ -146,7 +146,7 @@ namespace Dune::SubTriangulation {
     }
 
   private:
-    std::vector<typename Target::GlobalCoordinate> coords;
+    typename ReservedStorageMultiLinearGeometryTraits<typename Target::ctype>::template CornerStorage<Target::mydimension, Target::coorddimension>::Type coords;
   };
 
   template <class To>
@@ -166,7 +166,7 @@ namespace Dune::SubTriangulation {
     }
 
   private:
-    std::vector<typename To::GlobalCoordinate> coords;
+    typename ReservedStorageMultiLinearGeometryTraits<typename To::ctype>::template CornerStorage<To::mydimension, To::coorddimension>::Type coords;
   };
 
   template <class Geometry, class FundamentalElement, class VolumeSnippetIt, class LST>
@@ -523,15 +523,15 @@ namespace Dune::SubTriangulation {
       volumeRefinement_.reconstructInterface();
 
       for (const auto& i : volumeRefinement_.interface()) {
-        globalCornerCoordinates_.clear();
+        typename ReservedStorageMultiLinearGeometryTraits<ctype>::template CornerStorage<std::max(dim - 1, 0), dim>::Type globalCornerCoordinates;
 
         for (int c = 0; c < i.corners(); ++c) {
-          globalCornerCoordinates_.push_back(lgeo.global(i.corner(c)));
+          globalCornerCoordinates.push_back(lgeo.global(i.corner(c)));
         }
 
         internalInterfaceSnippets_.emplace_back(InternalInterfaceSnippet(
-            i.type(), globalCornerCoordinates_,
-            computeUnitOuterNormal(globalCornerCoordinates_, functionValues_),
+            i.type(), globalCornerCoordinates,
+            computeUnitOuterNormal(globalCornerCoordinates, functionValues_),
             levelSetElement, interface.index() * cutsPerIniternalInterface_));
       }
 

@@ -34,7 +34,7 @@ namespace Dune
       }
 
       InterfaceSnippetBase(Dune::GeometryType type,
-          const std::vector<FieldVector<ctype, dim> >& corners,
+          const typename Dune::SubTriangulation::ReservedStorageMultiLinearGeometryTraits<ctype>::template CornerStorage<dim - 1, dim>::Type& corners,
           const FieldVector<ctype, dim>& globalUnitOuterNormal,
           const LevelSetElement& levelSetElement, std::size_t index, int outsideFundamentalElementIndex = -1)
           : globalGeometry_(type, corners)

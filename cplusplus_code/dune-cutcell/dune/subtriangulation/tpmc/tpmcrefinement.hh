@@ -108,6 +108,8 @@ public:
       for (const std::vector<int>& element : elements) {
         using namespace std::placeholders;
 
+        typename Dune::SubTriangulation::ReservedStorageMultiLinearGeometryTraits<
+            ctype>::template CornerStorage<std::max(dim - 1, 0), dim>::Type coordinates;
         coordinates.resize(element.size());
         std::transform(element.begin(), element.end(), coordinates.begin(),
                        std::bind(&TpmcRefinement::transformCoordinate, this, _1));
@@ -134,6 +136,8 @@ public:
       for (const std::vector<int>& element : elements) {
         using namespace std::placeholders;
 
+        typename Dune::SubTriangulation::ReservedStorageMultiLinearGeometryTraits<
+            ctype>::template CornerStorage<dim, dim>::Type coordinates;
         coordinates.resize(element.size());
         std::transform(element.begin(), element.end(), coordinates.begin(),
                        std::bind(&TpmcRefinement::transformCoordinate, this, _1));
@@ -157,7 +161,6 @@ private:
   tpmc::GeometryType tpmcGeometryType;
   const ReferenceElement referenceElement;
   std::vector<Coordinate> vertices;
-  std::vector<Coordinate> coordinates;
   VolumeGeometryContainer interiorGeometries;
   VolumeGeometryContainer exteriorGeometries;
   InterfaceGeometryContainer interfaceGeometries;

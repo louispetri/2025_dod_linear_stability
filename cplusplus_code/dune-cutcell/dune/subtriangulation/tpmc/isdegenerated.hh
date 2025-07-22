@@ -43,8 +43,8 @@ struct IsDegenerated<ctype, 0> : IsDegeneratedBase<ctype>
     dim = 0
   };
 
-  template <int d>
-  static bool check(std::vector<FieldVector<ctype, d> >& c)
+  template <class Coordinates>
+  static bool check(const Coordinates& c)
   {
     return false;
   }
@@ -60,8 +60,8 @@ struct IsDegenerated<ctype, 1> : IsDegeneratedBase<ctype>
     dim = 1
   };
 
-  template <int d>
-  static bool check(std::vector<FieldVector<ctype, d> >& c)
+  template <class Coordinates>
+  static bool check(const Coordinates& c)
   {
     return BaseT::eq(c[0], c[1]);
   }
@@ -77,20 +77,18 @@ struct IsDegenerated<ctype, 2> : IsDegeneratedBase<ctype>
     dim = 2
   };
 
-  template <int d>
-  static bool check(std::vector<FieldVector<ctype, d> >& c)
+  template <class Coordinates>
+  static bool check(const Coordinates& c)
   {
     switch (c.size()) {
       case 3:
-        return (BaseT::eq(c[0], c[1]) || BaseT::eq(c[0], c[2]) || BaseT::eq(c[1], c[2]));
+        return checkTriangle(c[0], c[1], c[2]);
       case 4:
         if (BaseT::eq(c[0], c[1])) {
-          c.erase(c.begin() + 1);
-          return check(c);
+          return checkTriangle(c[0], c[2], c[3]);
         }
         if (BaseT::eq(c[0], c[2])) {
-          c.erase(c.begin() + 2);
-          return check(c);
+          return checkTriangle(c[0], c[1], c[3]);
         }
         if (BaseT::eq(c[0], c[3])) {
           return true;
@@ -99,12 +97,10 @@ struct IsDegenerated<ctype, 2> : IsDegeneratedBase<ctype>
           return true;
         }
         if (BaseT::eq(c[1], c[3])) {
-          c.erase(c.begin() + 3);
-          return check(c);
+          return checkTriangle(c[0], c[1], c[2]);
         }
         if (BaseT::eq(c[2], c[3])) {
-          c.erase(c.begin() + 3);
-          return check(c);
+          return checkTriangle(c[0], c[1], c[2]);
         }
         return ((BaseT::eq(c[0], c[1]) && BaseT::eq(c[2], c[3]))
                 || (BaseT::eq(c[0], c[2]) && BaseT::eq(c[1], c[3])));
@@ -113,6 +109,12 @@ struct IsDegenerated<ctype, 2> : IsDegeneratedBase<ctype>
                                         << "In 2D there is no known geometry with " << c.size()
                                         << " corners");
     }
+  }
+
+  template <class Coordinate>
+  static bool checkTriangle(const Coordinate& c0, const Coordinate& c1, const Coordinate& c2)
+  {
+    return (BaseT::eq(c0, c1) || BaseT::eq(c0, c2) || BaseT::eq(c1, c2));
   }
 };
 
@@ -125,8 +127,8 @@ struct IsDegenerated<ctype, 3> : IsDegeneratedBase<ctype>
     dim = 3
   };
 
-  template <int d>
-  static bool check(std::vector<FieldVector<ctype, d> >& c)
+  template <class Coordinates>
+  static bool check(const Coordinates& c)
   {
     switch (c.size()) {
       case 4:
