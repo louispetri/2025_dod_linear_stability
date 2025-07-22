@@ -78,18 +78,21 @@ Execute the file build.sh inside the directory cplusplus_code. It will download 
 and the TPMC package. Also make sure that GNU parallel (https://www.gnu.org/software/parallel/) is available in your path.
 Move to the folder cplusplus_code/dune-cutcell/build. It should contain an executable src/simulationsscalartransport and
 a configuration file scalar-transport.ini.
+
 Inside the folder cplusplus_code/dune-cutcell/build you should execute the scripts cplusplus_code/dune-cutcell/utility/compute-operator-norms.sh
 and cplusplus_code/dune-cutcell/compute-errors.sh.
 Both scripts take two arguments, a file containing the desired offsets for the channel geometry (you can take the file located
 at cplusplus_code/dune-cutcell/utility/offsets.txt) and the maximum number of jobs for GNU parallel. You can pass 0 to let
 GNU parallel run as many jobs in parallel as possible.
+
 The script cplusplus_code/dune-cutcell/utility/compute-operator-norms.sh will compute different operator norms. The outer loop
 controls the different capacity factors that will be used. Make sure that the key output.operatorNorm in scalar-transport.ini
 is set to true. The keys xresolution and channelTest.channelAngle, resp. channelTest.vfAngle control the number of background cells
 and the angle of the channel. To reproduce operator norms from the paper, set xresolution and yresolution to 20. Also set channelTest.length to 1.0.
 The final output will be a folder for each capacity factor (tau-*) containing a JSON file for each offset containing the computed operator norm.
 You can generate a plot of the operatornorms with the python script cplusplus_code/utility/operatornormplot.py. To do so,
-move inside a folder for a given capacity factor (tau-*) and call the script from there.
+move inside a folder for a given capacity factor (tau-*) and call the script from there. Hint: You can speed up the process by setting timestepping.T to 0.0.
+
 The script cplusplus_code/dune-cutcell/utility/compute-errors.sh performs simulations for given CFL factors. The cfl factors can
 be controlled by the outer loop inside the script. Keep in mind that a CFL factor of 1 / (2p + 1) is applied regardless of the
 specified CFL factor. Make sure that the keys output.l2Norm and output.linfNorm in scalar-transport.ini are set to true. To
