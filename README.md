@@ -78,6 +78,8 @@ Execute the file build.sh inside the directory cplusplus_code. It will download 
 and the TPMC package. Also make sure that GNU parallel (https://www.gnu.org/software/parallel/) is available in your path.
 Move to the folder cplusplus_code/dune-cutcell/build. It should contain an executable src/simulationsscalartransport and
 a configuration file scalar-transport.ini.
+Unfortunately, the TPMC package relies on some outdated functionality of the numpy package. You will need to use a Python
+version up to 3.11 to install it.
 
 Inside the folder cplusplus_code/dune-cutcell/build you should execute the scripts cplusplus_code/dune-cutcell/utility/compute-operator-norms.sh
 and cplusplus_code/dune-cutcell/compute-errors.sh.
