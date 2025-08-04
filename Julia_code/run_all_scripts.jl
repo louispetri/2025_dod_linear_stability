@@ -8,7 +8,7 @@ mkpath("./Plot_scripts/convergence_sharp_results/convergence_for_paper/conv_work
 mkpath("./Plot_scripts/Work_Precision_Diagramms/work_precision_data")
 
 
-# 1.: Operator norm analysis for the extrapolation operator (Figures 2, 3 and 4)
+# 1.: Operator norm analysis for the extrapolation operator (Figure 2)
 
 include("./Plot_scripts/opnorm_vs_extrapolation/compute_opnorm_extrapolation.jl") # Computation/Plotting
 
@@ -34,7 +34,7 @@ include("./Plot_scripts/paper_plots_with_makie/Blockmatrix_details/blockmatrix_c
 
 include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie.jl") # Computation
 
-include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie_plots.j") # Plotting
+include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie_plots.jl") # Plotting
 
 # 8. Convergence errors for DoD, applying different lambda_c (Figure 8)
 

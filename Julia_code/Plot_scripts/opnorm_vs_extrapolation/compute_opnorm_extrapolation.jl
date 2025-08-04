@@ -2,9 +2,9 @@ using PolynomialBases, LinearAlgebra, CairoMakie, LaTeXStrings
 
 f = Figure(fontsize = 18)
 g = Figure(fontsize = 18)
-ax1GLL = Axis(f[1,1], xlabel = L"\alpha", ylabel = L"\Vert\mathbb{I}\Vert^{1/p}", title = L"GL$",
+ax1GLL = Axis(f[1,1], xlabel = L"\alpha", ylabel = L"\Vert\mathbb{I}\Vert^{1/p}", title = L"GL$$",
         xlabelsize = 28, ylabelsize = 28, titlesize = 28)
-ax1GL = Axis(f[2,1], xlabel = L"\alpha", ylabel = L"\Vert\mathbb{I}\Vert^{1/p}", title = L"GLL$",
+ax1GL = Axis(f[2,1], xlabel = L"\alpha", ylabel = L"\Vert\mathbb{I}\Vert^{1/p}", title = L"GLL$$",
 xlabelsize = 28, ylabelsize = 28, titlesize = 28)
 alphas = range(0,0.49, length = 100)
 opnorms = zeros(length(alphas))
@@ -21,7 +21,7 @@ for p in range(2,15)
         end
     end
 end
-f[1:2, 2] = Legend(f, ax1GLL, L"orders$", framevisible = true)
+f[1:2, 2] = Legend(f, ax1GLL, L"orders$$", framevisible = true)
 #axislegend(ax1GL, position = :lt)
 #axislegend(ax1GLL, position = :lt)
 
@@ -44,11 +44,11 @@ for nodes in [LobattoLegendre, GaussLegendre]
     end
     op_exp = 1 ./ps
     if nodes == LobattoLegendre
-        lines!(axsqrt, ps, opnorms2 .^op_exp, label = L"GLL$", linewidth = 1.5; color = :blue)
-        lines!(axlog, ps, opnorms2 , label = L"GLL$", linewidth = 1.5; color = :blue)
+        lines!(axsqrt, ps, opnorms2 .^op_exp, label = L"GLL$$", linewidth = 1.5; color = :blue)
+        lines!(axlog, ps, opnorms2 , label = L"GLL$$", linewidth = 1.5; color = :blue)
     else
-        lines!(axsqrt, ps, opnorms2 .^op_exp, label = L"GL$", linestyle = :dash, linewidth = 2.5; color = :tomato)
-        lines!(axlog, ps, opnorms2 , label = L"GL$", linestyle = :dash, linewidth = 2.5; color = :tomato)
+        lines!(axsqrt, ps, opnorms2 .^op_exp, label = L"GL$$", linestyle = :dash, linewidth = 2.5; color = :tomato)
+        lines!(axlog, ps, opnorms2 , label = L"GL$$", linestyle = :dash, linewidth = 2.5; color = :tomato)
     end
 end
 #glegend = Legend(g, axsqrt, "node types", framevisible = true)
