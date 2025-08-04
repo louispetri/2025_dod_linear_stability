@@ -1,9 +1,6 @@
 # TODO
 - DOI
 - references on paper and for this repo
-- include instruction to obtain julia results
-- include full instruction for DUNE results
-- empty folders?
 
 # The domain-of-dependence stabilization for cut-cell meshes is fully discretely stable
 
