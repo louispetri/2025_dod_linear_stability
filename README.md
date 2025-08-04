@@ -57,19 +57,19 @@ Once you have installed Julia, you can clone this repository, enter this directo
 ```shell
 git clone https://github.com/louispetri/2025_dod_linear_stability.git
 cd 2025_dod_linear_stability
+cd Julia_code
 julia --project=.
 ```
-
-Then enter the following commands to generate the data for the one dimensional case and all the plots of the paper.
+Then enter the following commands to generate the data for the one-dimensional case and all the plots of the paper.
 
 ```julia
 julia> import Pkg; Pkg.instantiate() # Does not need to be re-run the next time you enter the REPL
-julia> include("--.jl") # What gets generated
-# TODO
+include("./run_all_scripts.jl")
 ```
 
-All the figures are now ready and available in the following locations:
-1. 
+  
+
+All the figures are now ready and available in the respective folders/subfolders.
 
 The data for the two dimensional case were obtained using the DUNE framework in C++ and can be reproduced as follows:
 
