@@ -1,5 +1,6 @@
 # Calculate the optimized values for lambda_c up to an arbitrary degree for both types of nodes and store them in a text file
 using LinearAlgebra, PolynomialBases, DelimitedFiles, LaTeXStrings
+
 include("../../functions.jl")
 include("../../analysis_tools.jl")
 

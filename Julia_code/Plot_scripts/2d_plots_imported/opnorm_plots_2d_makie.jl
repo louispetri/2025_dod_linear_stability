@@ -1,4 +1,4 @@
-using LinearAlgebra, CairoMakie, PolynomialBases, OrdinaryDiffEq, CSV, DelimitedFiles, LaTeXStrings
+using LinearAlgebra, CairoMakie, PolynomialBases, DelimitedFiles, LaTeXStrings
 include("../../functions.jl")
 include("../../analysis_tools.jl")
 

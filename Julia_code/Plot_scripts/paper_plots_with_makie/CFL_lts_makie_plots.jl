@@ -59,7 +59,7 @@ for (basis, lambda_cs, tableind) in
         else 
             println("CHECK INPUT DATA BACKGROUND")
         end
-        lines!(ax, vec(alpha_res_background), vec(CFL_res_background), label = L"Background without cut cell$", linewidth = 3.5)
+        lines!(ax, vec(alpha_res_background), vec(CFL_res_background), label = L"Background without cut cell$$", linewidth = 3.5)
         lines!(ax, vec(alpha_res_timedep), vec(CFL_res_timedep), label = L"DoD, $\lambda_c = \lambda_c(\Delta t)$", linestyle = :dash, linewidth = 3.5)
         lines!(ax, vec(alpha_res_optim), vec(CFL_res_optim), label = L"DoD, optimized $\lambda_c$", linestyle = :dashdotdot, linewidth = 3.5)
         #axislegend(position = :lb)

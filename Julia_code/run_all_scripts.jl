@@ -33,7 +33,7 @@ include("./Plot_scripts/paper_plots_with_makie/Blockmatrix_details/blockmatrix_c
 	
 # 7. Sharp CFL restrictions for different alpha (Figure 7)
 
-include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie.jl") # Computation
+include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie.jl") # Computation (requires time)
 
 include("./Plot_scripts/paper_plots_with_makie/CFL_lts_makie_plots.jl") # Plotting
 
