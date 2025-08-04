@@ -7,6 +7,7 @@ mkpath("./Plot_scripts/convergence_sharp_results/convergence_for_paper/Sec_fac_0
 mkpath("./Plot_scripts/convergence_sharp_results/convergence_for_paper/conv_work_precision_data")
 mkpath("./Plot_scripts/Work_Precision_Diagramms/work_precision_data")
 
+# Hint: The following 10 substeps can be run independently
 
 # 1.: Operator norm analysis for the extrapolation operator (Figure 2)
 
