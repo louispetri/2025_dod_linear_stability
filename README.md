@@ -1,16 +1,21 @@
-# TODO
-- DOI
-- references on paper and for this repo
-
 # The domain-of-dependence stabilization for cut-cell meshes is fully discretely stable
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
-[![DOI](#TODO)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16751959.svg)](https://doi.org/10.5281/zenodo.16751959)
 
 This repository contains information and code to reproduce the results
 presented in the article
 ```bibtex
-@online{
+@online{petri2025domain,
+  title={The domain-of-dependence stabilization for cut-cell meshes is
+         fully discretely stable},
+  author={Petri, Louis and Birke, Gunnar and Engwer, Christian and
+          Ranocha, Hendrik},
+  year={2025},
+  month={08},
+  eprint={2508.05372},
+  eprinttype={arxiv},
+  eprintclass={math.NA}
 }
 ```
 
@@ -18,7 +23,15 @@ If you find these results useful, please cite the article mentioned above.
 If you use the implementations provided here, please **also** cite this
 repository as
 ```bibtex
-@misc{
+@misc{petri2025domainRepro,
+  title={Reproducibility repository for
+         "{T}he domain-of-dependence stabilization for cut-cell meshes
+         is fully discretely stable"},
+  author={Petri,Louis and Birke, Gunnar and Engwer, Christian and
+          Ranocha, Hendrik},
+  year={2025},
+  howpublished={\url{https://github.com/louispetri/2025_dod_linear_stability}},
+  doi={10.5281/zenodo.16751959}
 }
 ```
 
